@@ -14,7 +14,7 @@
 error_reporting(0);
 
 //define names of services here
-$s = array('My secret service','Selenium','Pinger');
+$s = array('ATM','My secret service','Selenium','Pinger');
 
 require("ZabbixAPI.class.php");
 
