@@ -43,21 +43,22 @@ foreach ($s as $name) {
 //print everything our
 $i = 0;
 print '<div class="row"><div class="span12">';
+$button_style = 'height:100px; width:100px';
 foreach ($stats as $service) {
 	//status value is linked to trigger severity
 	echo '<a href="/zabbix/srv_status.php">';
 	$i++;
 	if ($service["status"] >= 4) {
-		echo '<button class="btn btn-large btn-danger" type=button>'.
+		echo '<button class="btn btn-large btn-danger" style="'.$button_style.'" type=button>'.
 			'<p>'.$service['name'].'</p><i class="icon-fire"></i>'.
 			'</button>';
 
 	} elseif ($service["status"] <= 3 & $service["status"] != 0) {
-		echo '<button class="btn btn-large btn-warning" type=button>'.
+		echo '<button class="btn btn-large btn-warning" style="'.$button_style.'" type=button>'.
                         '<p>'.$service['name'].'</p><i class="icon-exclamation-sign"></i>'.
                         '</button>';
 	} else {
-		echo '<button class="btn btn-large btn-success" type=button>'.
+		echo '<button class="btn btn-large btn-success" style="'.$button_style.'" type=button>'.
                         '<p>'.$service['name'].'</p><i class="icon-thumbs-up"></i>'.
                         '</button>';
 	}
