@@ -6,9 +6,10 @@
 </head>
 <body>
 <div class=container>
-	<div class=container>
+	<div class=row>
 		<h2>Status of Zabbix IT Services</h2><h4>@ <?php echo date("H:i"); ?> <a href=""><i class="icon-refresh"></i></a></h4>
 		<hr>
+	</div>
 <?php
 
 error_reporting(0);
@@ -40,9 +41,12 @@ foreach ($s as $name) {
 }
 
 //print everything our
+$i = 0;
+print '<div class="row"><div class="span12">';
 foreach ($stats as $service) {
 	//status value is linked to trigger severity
 	echo '<a href="/zabbix/srv_status.php">';
+	$i++;
 	if ($service["status"] >= 4) {
 		echo '<button class="btn btn-large btn-danger" type=button>'.
 			'<p>'.$service['name'].'</p><i class="icon-fire"></i>'.
@@ -58,12 +62,16 @@ foreach ($stats as $service) {
                         '</button>';
 	}
 	echo '</a>'."\n";
+	if ($i >= 3) {
+		echo '</div></div><div class=row><div class="span12"><br>';
+		$i = 0;
+	}
 }
+echo '</div>';
 
 ?>
-		<hr>
 	</div>
-	<div class=container>
+	<div class=container><hr>
 		<small>Build by Marcel Hecko, 2012</small>
 	</div>
 </div>
